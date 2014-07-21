@@ -6,13 +6,13 @@ public class Character implements IRenderable {
 	}
 
 	@Override
-	public Map<Coord, IVoxel> getVoxelMap() {
+	public Map<Vector3, IVoxel> getVoxelMap() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Coord getOffset() {
+	public Vector3 getOffset() {
 		// TODO Auto-generated method stub
 		return null;
 	}
