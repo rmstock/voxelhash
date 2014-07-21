@@ -60,6 +60,26 @@ public class BaseType {
 		return new BaseType(value, myType);
 	}
 	
+	public BaseType add(BaseType second) {
+		Number value;
+		switch (myType) {
+			case BYTE: value = myValue.byteValue() + second.byteValue();
+				break;
+			case SHORT: value = myValue.shortValue() + second.shortValue();
+				break;
+			case INT: value = myValue.intValue() + second.intValue();
+				break;
+			case LONG: value = myValue.longValue() + second.longValue();
+				break;
+			case FLOAT: value = myValue.floatValue() + second.floatValue();
+				break;
+			case DOUBLE: value = myValue.doubleValue() + second.doubleValue();
+				break;
+			default: value = 0;
+		}
+		return new BaseType(value, myType);
+	}
+	
 	public byte getAccuracy() {
 		switch (myType) {
 			case BYTE: return 8;

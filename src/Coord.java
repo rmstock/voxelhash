@@ -20,16 +20,28 @@ public class Coord{
 			return null;
 		}
 		BaseType[] ret = new BaseType[dim];
-		if (aMinB) {
-			for (int i = 0; i < dim; i++) {
-				BaseType saver = vals[i].subtract(second.vals[i]);
-				if (!aMinB) {
-					Number temp = 0;
-					BaseType zero = new BaseType(temp, myType);
-					saver = zero.subtract(saver);
-				}
-				ret[i] = saver;
+		for (int i = 0; i < dim; i++) {
+			BaseType saver = vals[i].subtract(second.vals[i]);
+			if (!aMinB) {
+				Number temp = 0;
+				BaseType zero = new BaseType(temp, myType);
+				saver = zero.subtract(saver);
 			}
+			ret[i] = saver;
+		}
+		return new Coord(dim, ret);
+	}
+	
+	public Coord add(Coord second) {
+		
+		if (dim != second.getDimensions()) {
+			System.out.println("Dimension exception");
+			return null;
+		}
+		BaseType[] ret = new BaseType[dim];
+		for (int i = 0; i < dim; i++) {
+			BaseType saver = vals[i].add(second.vals[i]);
+			ret[i] = saver;
 		}
 		return new Coord(dim, ret);
 	}
