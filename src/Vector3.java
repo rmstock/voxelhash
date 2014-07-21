@@ -31,4 +31,10 @@ public class Vector3{
 	public void setValue(int i, float value) {
 		vals[i] = value;
 	}
+	
+	public void roundToInt() {
+		for (int i = 0; i < 3; i++) {
+			vals[i] = Math.round(vals[i]);
+		}
+	}
 }
