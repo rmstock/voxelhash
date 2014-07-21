@@ -27,4 +27,8 @@ public class Vector3{
 	public int getValue(byte i) {
 		return vals[i];
 	}
+
+	public void setValue(byte i, int value) {
+		vals[i] = value;
+	}
 }

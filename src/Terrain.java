@@ -1,27 +1,27 @@
 import java.util.Map;
 
-public class Character implements IRenderable {
-	private Bounding box;
-	
-	public Character() {
+public class Terrain implements IRenderable {
+	public Terrain() {
 		
 	}
 
-	@Override
 	public Map<Vector3, IVoxel> getVoxelMap() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Vector3 getOffset() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean boundingHit(Ray incoming) {
 		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public boolean addVoxels(Map<Vector3, IVoxel> map, Vector3 offset) {
+		// TODO fill
 		return false;
 	}
 
