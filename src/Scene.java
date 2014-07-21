@@ -10,4 +10,8 @@ public class Scene {
 	public boolean add(IRenderable toAdd) {
 		return renderables.add(toAdd);
 	}
+	
+	public boolean remove(IRenderable toRemove) {
+		return renderables.remove(toRemove);
+	}
 }
