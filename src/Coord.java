@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Coord{
+	//TODO convert to use ICoord, Number is too slow.
 	private byte dim;
-	private List<BaseType> vals;
+	private BaseType[] vals;
 	private Type myType;
 	
-	public Coord(byte dim, List<BaseType> vals) {
+	public Coord(byte dim, BaseType[] vals) {
 		this.vals = vals;
 		this.dim = dim;
 	}
@@ -21,26 +19,26 @@ public class Coord{
 			System.out.println("Dimension exception");
 			return null;
 		}
-		List<BaseType> ret = new ArrayList<BaseType>(dim);
+		BaseType[] ret = new BaseType[dim];
 		if (aMinB) {
 			for (int i = 0; i < dim; i++) {
-				BaseType saver = vals.get(i).subtract(second.vals.get(i));
+				BaseType saver = vals[i].subtract(second.vals[i]);
 				if (!aMinB) {
 					Number temp = 0;
 					BaseType zero = new BaseType(temp, myType);
 					saver = zero.subtract(saver);
 				}
-				ret.set(i,saver);
+				ret[i] = saver;
 			}
 		}
 		return new Coord(dim, ret);
 	}
 	
 	public byte getAccuracy() {
-		return vals.get(1).getAccuracy();
+		return vals[1].getAccuracy();
 	}
 	
 	public BaseType getValue(byte i) {
-		return vals.get(1);
+		return vals[i];
 	}
 }
