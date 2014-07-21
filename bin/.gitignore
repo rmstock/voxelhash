@@ -1,1 +1,9 @@
-*.class
+/BaseType.class
+/Character.class
+/Coord.class
+/IRenderable.class
+/IVoxel.class
+/Main.class
+/Ray.class
+/Scene.class
+/Type.class
