@@ -22,4 +22,9 @@ public class Scene {
 	public boolean remove(IRenderable toRemove) {
 		return renderables.remove(toRemove);
 	}
+	
+	public IRenderable testHit(Ray incoming) {
+		//TODO
+		return null;
+	}
 }

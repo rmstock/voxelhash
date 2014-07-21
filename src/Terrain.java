@@ -16,10 +16,7 @@ public class Terrain implements IRenderable {
 	}
 
 	public Vector3 getOffset() {
-		float[] array = new float[] {0,0,0};
-		Vector3 temp = new Vector3(array);
-		temp.roundToInt();
-		return temp;
+		return Vector3.getZero();
 	}
 
 	public boolean boundingHit(Ray incoming) {

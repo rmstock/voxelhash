@@ -1,5 +1,4 @@
 public class Vector3{
-	//TODO convert to use ICoord, Number is too slow.
 	private static byte dim = 3;
 	private float[] vals;
 	
@@ -36,5 +35,10 @@ public class Vector3{
 		for (int i = 0; i < 3; i++) {
 			vals[i] = Math.round(vals[i]);
 		}
+	}
+	
+	public static Vector3 getZero() {
+		float[] zero = new float[] {0,0,0};
+		return new Vector3(zero);
 	}
 }
