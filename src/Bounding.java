@@ -6,12 +6,16 @@ public class Bounding {
 	private Vector3 max;
 	private Vector3 min;
 	
-	private Bounding(Vector3 max, Vector3 min) {
+	public Bounding() {
+		
+	}
+	
+	public Bounding(Vector3 max, Vector3 min) {
 		this.max = max;
 		this.min = min;
 	}
 	
-	private boolean extend(Vector3 point) {
+	public boolean extend(Vector3 point) {
 		boolean extend = false;
 		if (max == null || min == null) {
 			max = point;
@@ -30,5 +34,10 @@ public class Bounding {
 			}
 		}
 		return extend;
+	}
+
+	public boolean testHit(Ray incoming) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

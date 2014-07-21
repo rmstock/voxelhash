@@ -1,33 +1,46 @@
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class Terrain implements IRenderable {
+	Map<Vector3, IVoxel> map = new HashMap<Vector3, IVoxel>();
+	Bounding box = new Bounding();
+	
 	public Terrain() {
 		
 	}
 
 	public Map<Vector3, IVoxel> getVoxelMap() {
-		// TODO Auto-generated method stub
-		return null;
+		return map;
 	}
 
 	public Vector3 getOffset() {
-		// TODO Auto-generated method stub
-		return null;
+		int[] array = new int[] {0,0,0};
+		return new Vector3(array);
 	}
 
 	public boolean boundingHit(Ray incoming) {
-		// TODO Auto-generated method stub
-		return false;
+		return box.testHit(incoming);
 	}
 	
 	public boolean addVoxels(Map<Vector3, IVoxel> map, Vector3 offset) {
-		// TODO fill
-		return false;
+		boolean clean = true;
+		Set<Entry<Vector3, IVoxel>> set = map.entrySet();
+		for (Entry<Vector3, IVoxel> e : set) {
+			Vector3 loc = e.getKey();
+			IVoxel vox = e.getValue();
+			loc = loc.add(offset);
+			vox = map.put(loc, vox);
+			box.extend(loc);
+			if (vox != null)
+				clean = false;
+		}
+		return clean;
 	}
 
 	@Override
 	public boolean isImmutable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

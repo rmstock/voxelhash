@@ -21,8 +21,7 @@ public class Character implements IRenderable {
 
 	@Override
 	public boolean boundingHit(Ray incoming) {
-		// TODO Auto-generated method stub
-		return false;
+		return box.testHit(incoming);
 	}
 
 	@Override
