@@ -16,7 +16,7 @@ public class Terrain implements IRenderable {
 	}
 
 	public Vector3 getOffset() {
-		int[] array = new int[] {0,0,0};
+		float[] array = new float[] {0,0,0};
 		return new Vector3(array);
 	}
 
