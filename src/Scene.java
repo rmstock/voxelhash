@@ -1,7 +1,8 @@
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-public class Scene {
+public class Scene implements IRenderable{
 	Set<IRenderable> renderables;
 	Terrain baseMap;
 	
@@ -22,9 +23,27 @@ public class Scene {
 	public boolean remove(IRenderable toRemove) {
 		return renderables.remove(toRemove);
 	}
-	
-	public IRenderable testHit(Ray incoming) {
-		//TODO
+
+	@Override
+	public Map<Coordinate, IVoxel> getVoxelMap() {
+		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Coordinate getOffset() {
+		return Coordinate.getZero();
+	}
+
+	@Override
+	public boolean boundingHit(Ray incoming) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isImmutable() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

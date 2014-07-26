@@ -3,19 +3,19 @@
  * 
  * */
 public class Bounding {
-	private Vector3 max;
-	private Vector3 min;
+	private Coordinate max;
+	private Coordinate min;
 	
 	public Bounding() {
 		
 	}
 	
-	public Bounding(Vector3 max, Vector3 min) {
+	public Bounding(Coordinate max, Coordinate min) {
 		this.max = max;
 		this.min = min;
 	}
 	
-	public boolean extend(Vector3 point) {
+	public boolean extend(Coordinate point) {
 		boolean extend = false;
 		if (max == null || min == null) {
 			max = point;

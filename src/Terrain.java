@@ -4,33 +4,32 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class Terrain implements IRenderable {
-	Map<Vector3, IVoxel> map = new HashMap<Vector3, IVoxel>();
+	Map<Coordinate, IVoxel> map = new HashMap<Coordinate, IVoxel>();
 	Bounding box = new Bounding();
 	
 	public Terrain() {
 		
 	}
 
-	public Map<Vector3, IVoxel> getVoxelMap() {
+	public Map<Coordinate, IVoxel> getVoxelMap() {
 		return map;
 	}
 
-	public Vector3 getOffset() {
-		return Vector3.getZero();
+	public Coordinate getOffset() {
+		return Coordinate.getZero();
 	}
 
 	public boolean boundingHit(Ray incoming) {
 		return box.testHit(incoming);
 	}
 	
-	public boolean addVoxels(Map<Vector3, IVoxel> map, Vector3 offset) {
+	public boolean addVoxels(Map<Coordinate, IVoxel> map, Coordinate offset) {
 		boolean clean = true;
-		Set<Entry<Vector3, IVoxel>> set = map.entrySet();
-		for (Entry<Vector3, IVoxel> e : set) {
-			Vector3 loc = e.getKey();
+		Set<Entry<Coordinate, IVoxel>> set = map.entrySet();
+		for (Entry<Coordinate, IVoxel> e : set) {
+			Coordinate loc = e.getKey();
 			IVoxel vox = e.getValue();
 			loc = loc.add(offset);
-			loc.roundToInt();
 			vox = map.put(loc, vox);
 			box.extend(loc);
 			if (vox != null)

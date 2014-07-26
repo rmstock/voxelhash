@@ -1,8 +1,8 @@
 import java.util.Map;
 
 public interface IRenderable {
-	public Map<Vector3, IVoxel> getVoxelMap();
-	public Vector3 getOffset();
+	public Map<Coordinate, IVoxel> getVoxelMap();
+	public Coordinate getOffset();
 	public boolean boundingHit(Ray incoming);
 	public boolean isImmutable();
 }

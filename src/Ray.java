@@ -1,14 +1,16 @@
+import java.util.Iterator;
 
-public class Ray {
-	private Vector3 origin;
+
+public class Ray implements Iterable<Coordinate>{
+	private Coordinate origin;
 	private Vector3 direction;
 	
-	public Ray(Vector3 origin, Vector3 direction) {
+	public Ray(Coordinate origin, Vector3 direction) {
 		this.origin = origin;
 		this.direction = direction;
 	}
 	
-	public Vector3 getLocHitX(float x) {
+	public Coordinate getLocHitX(float x) {
 		float xDir = direction.getValue(0);
 		float yDir = direction.getValue(1);
 		float zDir = direction.getValue(2);
@@ -16,9 +18,9 @@ public class Ray {
 		float y = origin.getValue(1) + yDir * scale;
 		float z = origin.getValue(2) + zDir * scale;
 		float[] xyz = new float[]{x, y, z};
-		return new Vector3(xyz);
+		return new Coordinate(xyz);
 	}
-	public Vector3 getLocHitY(float y) {
+	public Coordinate getLocHitY(float y) {
 		float xDir = direction.getValue(0);
 		float yDir = direction.getValue(1);
 		float zDir = direction.getValue(2);
@@ -26,9 +28,9 @@ public class Ray {
 		float x = origin.getValue(0) + xDir * scale;
 		float z = origin.getValue(2) + zDir * scale;
 		float[] xyz = new float[]{x, y, z};
-		return new Vector3(xyz);
+		return new Coordinate(xyz);
 	}
-	public Vector3 getLocHitZ(float z) {
+	public Coordinate getLocHitZ(float z) {
 		float xDir = direction.getValue(0);
 		float yDir = direction.getValue(1);
 		float zDir = direction.getValue(2);
@@ -36,7 +38,11 @@ public class Ray {
 		float x = origin.getValue(0) + xDir * scale;
 		float y = origin.getValue(1) + yDir * scale;
 		float[] xyz = new float[]{x, y, z};
-		return new Vector3(xyz);
+		return new Coordinate(xyz);
+	}
+
+	public Iterator<Coordinate> iterator() {
+		return new RayIterator(origin, direction);
 	}
 
 }

@@ -3,24 +3,24 @@ import java.util.Map;
 
 public class Character implements IRenderable {
 	private Bounding box;
-	private Map<Vector3, IVoxel> map;
-	private Vector3 offset;
+	private Map<Coordinate, IVoxel> map;
+	private Coordinate offset;
 	private boolean immutable;
 	
 	public Character() {
 		box = new Bounding();
-		map = new HashMap<Vector3, IVoxel>();
-		offset = Vector3.getZero();
+		map = new HashMap<Coordinate, IVoxel>();
+		offset = Coordinate.getZero();
 		immutable = false;
 	}
 
 	@Override
-	public Map<Vector3, IVoxel> getVoxelMap() {
+	public Map<Coordinate, IVoxel> getVoxelMap() {
 		return map;
 	}
 
 	@Override
-	public Vector3 getOffset() {
+	public Coordinate getOffset() {
 		return offset;
 	}
 

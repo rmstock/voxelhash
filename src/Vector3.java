@@ -6,6 +6,13 @@ public class Vector3{
 		this.vals = vals;
 	}
 	
+	public Vector3(int[] vals) {
+		this.vals = new float[3];
+		this.vals[0] = (float)vals[0];
+		this.vals[1] = (float)vals[1];
+		this.vals[2] = (float)vals[2];
+	}
+	
 	public Vector3 subtract(Vector3 second) {
 		float[] data = new float[3];
 		for (int i = 0; i < dim; i++) {
@@ -29,12 +36,6 @@ public class Vector3{
 
 	public void setValue(int i, float value) {
 		vals[i] = value;
-	}
-	
-	public void roundToInt() {
-		for (int i = 0; i < 3; i++) {
-			vals[i] = Math.round(vals[i]);
-		}
 	}
 	
 	public static Vector3 getZero() {
