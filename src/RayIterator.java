@@ -1,6 +1,5 @@
 import java.util.Iterator;
 
-
 public class RayIterator implements Iterator<Coordinate>{
 	private Coordinate origin;
 	private Vector3 direction;

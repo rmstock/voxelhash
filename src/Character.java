@@ -8,6 +8,7 @@ public class Character implements IRenderable {
 	private boolean immutable;
 	
 	public Character() {
+		// TODO set initializers and fill bounding from map from file
 		box = new Bounding();
 		map = new HashMap<Coordinate, IVoxel>();
 		offset = Coordinate.getZero();
