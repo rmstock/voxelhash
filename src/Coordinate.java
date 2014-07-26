@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Coordinate{
 	private static byte dim = 3;
 	private int[] vals;
@@ -40,5 +42,20 @@ public class Coordinate{
 	public static Coordinate getZero() {
 		int[] zero = new int[] {0,0,0};
 		return new Coordinate(zero);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Arrays.hashCode(vals);
+	}
+	
+	@Override
+	public boolean equals(Object second) {
+		if (second instanceof Coordinate) {
+			Coordinate two = (Coordinate) second;
+			if (two.vals[0] == vals[0] && two.vals[1] == vals[1] && two.vals[2] == vals[2])
+				return true;
+		}
+		return false;
 	}
 }

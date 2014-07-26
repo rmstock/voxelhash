@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Vector3{
 	private static byte dim = 3;
 	private float[] vals;
@@ -41,5 +43,20 @@ public class Vector3{
 	public static Vector3 getZero() {
 		float[] zero = new float[] {0,0,0};
 		return new Vector3(zero);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Arrays.hashCode(vals);
+	}
+	
+	@Override
+	public boolean equals(Object second) {
+		if (second instanceof Vector3) {
+			Vector3 two = (Vector3) second;
+			if (two.vals[0] == vals[0] && two.vals[1] == vals[1] && two.vals[2] == vals[2])
+				return true;
+		}
+		return false;
 	}
 }
