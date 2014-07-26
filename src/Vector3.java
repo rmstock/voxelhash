@@ -40,6 +40,13 @@ public class Vector3{
 		vals[i] = value;
 	}
 	
+	public void normalize() {
+		float length = (float)Math.sqrt(Math.pow(vals[0],2) + Math.pow(vals[1],2) + Math.pow(vals[2],2));
+		vals[0] /= length;
+		vals[1] /= length;
+		vals[2] /= length;
+	}
+	
 	public static Vector3 getZero() {
 		float[] zero = new float[] {0,0,0};
 		return new Vector3(zero);
