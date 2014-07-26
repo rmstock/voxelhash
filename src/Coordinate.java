@@ -10,9 +10,9 @@ public class Coordinate{
 	
 	public Coordinate(float[] vals) {
 		this.vals = new int[3];
-		this.vals[0] = (int)vals[0];
-		this.vals[1] = (int)vals[1];
-		this.vals[2] = (int)vals[2];
+		this.vals[0] = Math.round(vals[0]);
+		this.vals[1] = Math.round(vals[1]);
+		this.vals[2] = Math.round(vals[2]);
 	}
 	
 	public Coordinate subtract(Coordinate second) {
