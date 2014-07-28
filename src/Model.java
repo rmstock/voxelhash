@@ -21,7 +21,7 @@ public class Model {
 		return scene;
 	}
 	
-	public void loadSave(String saveName) {
+	public void loadSave(String fileName) {
 		// TODO work on this
 		// Check if save old data before propagation.
 		if (Controller.getInstance().getShouldSave()) {
@@ -29,7 +29,7 @@ public class Model {
 			scene.save();
 		}
 		// Get new data
-		SaveReader reader = new SaveReader("", saveName, ".sav");
+		SaveReader reader = new SaveReader(fileName, null, ".sav");
 		String[] words;
 		while ((words = reader.readLine()) != null) {
 			if (words[0] == "new" && words[1] == "SCENE") {
