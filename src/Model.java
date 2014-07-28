@@ -32,10 +32,10 @@ public class Model {
 		SaveReader reader = new SaveReader(fileName, null, ".sav");
 		String[] words;
 		while ((words = reader.readLine()) != null) {
-			if (words[0] == "new" && words[1] == "SCENE") {
+			if (words[0].equals("new") && words[1].equals("SCENE")) {
 				scene = new Scene();
 			}
-			else if (words[0] == "SCENE" && words[1] == "load") {
+			else if (words[0].equals("SCENE") && words[1].equals("load")) {
 				scene.load(words[2]);
 			}
 		}

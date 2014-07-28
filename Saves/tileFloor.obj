@@ -43,8 +43,8 @@ new LIST
 4 2 0
 4 4 0
 end LIST
-new LIST
 set COLOR 0 0 0
+new LIST
 -4 -3 0
 -4 -1 0
 -4 1 0

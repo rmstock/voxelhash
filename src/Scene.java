@@ -61,13 +61,13 @@ public class Scene implements IRenderable, ISaveable{
 		Placeable toAdd = null;
 		boolean worked = true;
 		while ((words = reader.readLine()) != null) {
-			if (words[0] == "new" && words[1] == "PLACEABLE") {
+			if (words[0].equals("new") && words[1].equals("PLACEABLE")) {
 				if (toAdd != null) {
 					add(toAdd);
 				}
 				toAdd = new Placeable();
 			}
-			else if (words[0] == "PLACEABLE" && words[1] == "load") {
+			else if (words[0].equals("PLACEABLE") && words[1].equals("load")) {
 				if (toAdd != null) {
 					toAdd.load(words[2]);
 				} else {
