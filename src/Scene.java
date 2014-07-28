@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Scene implements IRenderable{
+public class Scene implements IRenderable, ISaveable{
 	Set<IRenderable> renderables;
 	Terrain baseMap;
 	
@@ -26,7 +26,6 @@ public class Scene implements IRenderable{
 
 	@Override
 	public Map<Coordinate, IVoxel> getVoxelMap() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -37,13 +36,45 @@ public class Scene implements IRenderable{
 
 	@Override
 	public boolean boundingHit(Ray incoming) {
-		// TODO Auto-generated method stub
+		if (baseMap.boundingHit(incoming)) return true;
+		for (IRenderable r : renderables) {
+			if (r.boundingHit(incoming)) return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean isImmutable() {
+		return false;
+	}
+
+	@Override
+	public boolean save() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
+	}
+
+	@Override
+	public boolean load(String fileName) {
+		SaveReader reader = new SaveReader(fileName, Model.getInstance().getSaveName(), ".scn");
+		String[] words;
+		Placeable toAdd = null;
+		boolean worked = true;
+		while ((words = reader.readLine()) != null) {
+			if (words[0] == "new" && words[1] == "PLACEABLE") {
+				if (toAdd != null) {
+					add(toAdd);
+				}
+				toAdd = new Placeable();
+			}
+			else if (words[0] == "PLACEABLE" && words[1] == "load") {
+				if (toAdd != null) {
+					toAdd.load(words[2]);
+				} else {
+					worked = false;
+				}
+			}
+		}
+		return worked;
 	}
 }

@@ -7,10 +7,10 @@ public class SaveReader {
 	
 	public SaveReader(String header, String save, String close) {
 		try {
-			br = new BufferedReader(new FileReader(header + save + close));
+			br = new BufferedReader(new FileReader("Saves\\" + save + "\\" + header + close));
 		} catch (IOException e) {
 			try {
-				br = new BufferedReader(new FileReader(header + close));
+				br = new BufferedReader(new FileReader("Saves\\" + header + close));
 			} catch (IOException e2) {
 				e.printStackTrace();
 				e2.printStackTrace();
@@ -25,7 +25,13 @@ public class SaveReader {
 		} catch (IOException e) {
 			System.out.println("Tried to read past end of file.");
 		}
-		return new String[] {""};
+		try {
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		br = null;
+		return null;
 	}
 	
 }
