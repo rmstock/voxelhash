@@ -7,10 +7,10 @@ public class SaveReader {
 	
 	public SaveReader(String header, String save, String close) {
 		try {
-			br = new BufferedReader(new FileReader("Saves\\" + save + "\\" + header + close));
+			br = new BufferedReader(new FileReader("\\Saves\\" + save + "\\" + header + close));
 		} catch (IOException e) {
 			try {
-				br = new BufferedReader(new FileReader("Saves\\" + header + close));
+				br = new BufferedReader(new FileReader("\\Saves\\" + header + close));
 			} catch (IOException e2) {
 				e.printStackTrace();
 				e2.printStackTrace();
