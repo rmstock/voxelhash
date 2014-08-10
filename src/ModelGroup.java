@@ -2,11 +2,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Scene implements IRenderable, ISaveable{
+public class ModelGroup implements IRenderable, ISaveable{
 	Set<IRenderable> renderables;
 	Terrain baseMap;
 	
-	public Scene() {
+	public ModelGroup() {
 		renderables = new HashSet<IRenderable>();
 		baseMap = new Terrain();
 	}

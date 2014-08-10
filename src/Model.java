@@ -2,7 +2,7 @@
 public class Model {
 	private static Model instance = new Model();
 	private String saveName;
-	private Scene scene;
+	private ModelGroup scene;
 	
 	private Model() {
 		saveName = null;
@@ -17,7 +17,7 @@ public class Model {
 		return saveName;
 	}
 	
-	public Scene getScene() {
+	public ModelGroup getScene() {
 		return scene;
 	}
 	
@@ -33,7 +33,7 @@ public class Model {
 		String[] words;
 		while ((words = reader.readLine()) != null) {
 			if (words[0].equals("new") && words[1].equals("SCENE")) {
-				scene = new Scene();
+				scene = new ModelGroup();
 			}
 			else if (words[0].equals("SCENE") && words[1].equals("load")) {
 				scene.load(words[2]);
