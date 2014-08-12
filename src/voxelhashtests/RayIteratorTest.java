@@ -1,40 +1,33 @@
 package voxelhashtests;
 
-import voxelhash.Coordinate;
 import voxelhash.RayIterator;
 import java.util.Arrays;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 
 public class RayIteratorTest {
-
-  @BeforeClass
-  public void beforeClass() {
-  }
-
-  @BeforeTest
-  public void beforeTest() {
-  }
-
+	RayIterator ray;
 
   @Test
   public void RayIterator() {
-    RayIterator ray = new RayIterator(new int[] {0,0,0}, new float[]{0,0,0});
+    ray = new RayIterator(new int[] {0,0,0}, new float[]{0,0,0});
     Assert.assertTrue(ray.hasNext());
     Assert.assertEquals(Arrays.hashCode(ray.next()), Arrays.hashCode(new int[] {0,1,0}));
   }
 
-  @Test
+  @Test (dependsOnMethods = { "RayIterator" })
   public void hasNext() {
-    throw new RuntimeException("Test not implemented");
+    Assert.assertTrue(ray.hasNext());
   }
 
-  @Test
+  @Test (dependsOnMethods = { "RayIterator", "hasNext" })
   public void next() {
-    throw new RuntimeException("Test not implemented");
+	int[] last = null;
+    for(int i = 0; i < 100; i++) {
+    	int[] now = ray.next();
+    	int hash = last == null ? 0 : Arrays.hashCode(last);
+    	Assert.assertNotEquals(hash, Arrays.hashCode(now));
+    }
   }
 }
