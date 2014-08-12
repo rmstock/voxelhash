@@ -1,20 +1,20 @@
 package voxelhash;
 import java.util.Iterator;
 
-public class RayIterator implements Iterator<Coordinate>{
-	private Coordinate origin;
-	private Vector3 direction;
-	private Vector3 dist;
-	private Vector3 step;
-	private Coordinate last;
+public class RayIterator implements Iterator<int[]>{
+	private int[] origin;
+	private float[] direction;
+	private float[] dist;
+	private float[] step;
+	private int[] last;
 	
 	
-	public RayIterator(Coordinate origin, Vector3 direction) {
-		this.origin = origin;
+	public RayIterator(int[] coord, float[] direction) {
+		this.origin = coord;
 		this.direction = direction;
-		dist = Vector3.getZero();
-		this.direction.normalize();
-		step = new Vector3(new float[]{1 / direction.getValue(0), 1 / direction.getValue(1), 1 / direction.getValue(2)});
+		dist = new float[]{0,0,0};
+		Vector3.normalize(dist);
+		step = new float[]{1 / direction[0], 1 / direction[1], 1 / direction[2]};
 		last = null;
 	}
 
@@ -24,16 +24,15 @@ public class RayIterator implements Iterator<Coordinate>{
 	}
 
 	@Override
-	public Coordinate next() {
+	public int[] next() {
 		int shortest;
-		shortest = (dist.getValue(0) > dist.getValue(1)) ? 1 : 0;
-		shortest = (dist.getValue(shortest) > dist.getValue(2)) ? 2 : shortest;
-		Coordinate ret = new Coordinate(new int[]{(int)(direction.getValue(0) * dist.getValue(shortest)), (int)(direction.getValue(1) * dist.getValue(shortest)), (int)(direction.getValue(2) * dist.getValue(shortest))});
-		ret.add(origin);
-		dist.setValue(shortest, dist.getValue(shortest) + step.getValue(shortest));
+		shortest = (dist[0] > dist[1]) ? 1 : 0;
+		shortest = (dist[shortest] > dist[2]) ? 2 : shortest;
+		int[] ret = new int[]{(int)(direction[0] * dist[shortest]) + origin[0], (int)(direction[1] * dist[shortest]) + origin[1], (int)(direction[2] * dist[shortest]) + origin[2]};
+		dist[shortest] = dist[shortest] + step[shortest];
 		if (origin.equals(last))
 			System.out.println("Error: Origin" + origin.toString() + " equals next: " + ret.toString());
-		return null;
+		return ret;
 	}
 
 }
