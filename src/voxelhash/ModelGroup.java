@@ -26,13 +26,13 @@ public class ModelGroup implements IRenderable, ISaveable{
 	}
 
 	@Override
-	public Map<Coordinate, IVoxel> getVoxelMap() {
+	public Map<int[], IVoxel> getVoxelMap() {
 		return null;
 	}
 
 	@Override
-	public Coordinate getOffset() {
-		return Coordinate.getZero();
+	public int[] getOffset() {
+		return new int[] {0,0,0};
 	}
 
 	@Override

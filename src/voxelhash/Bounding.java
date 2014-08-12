@@ -5,19 +5,19 @@ package voxelhash;
  * 
  * */
 public class Bounding {
-	private Coordinate max;
-	private Coordinate min;
+	private int[] max;
+	private int[] min;
 	
 	public Bounding() {
 		
 	}
 	
-	public Bounding(Coordinate max, Coordinate min) {
+	public Bounding(int[] min, int[] max) {
 		this.max = max;
 		this.min = min;
 	}
 	
-	public boolean extend(Coordinate point) {
+	public boolean extend(int[] point) {
 		boolean extend = false;
 		if (max == null || min == null) {
 			max = point;
@@ -25,12 +25,12 @@ public class Bounding {
 			extend = true;
 		} else {
 			for (int i = 0; i < 3; i++) {
-				if (max.getValue((byte)i) < point.getValue((byte)i)) {
-					max.setValue((byte) i, point.getValue((byte)i));
+				if (max[i] < point[i]) {
+					max[i] = point[i];
 					extend = true;
 				}
-				if (min.getValue((byte) i) > point.getValue((byte) i)) {
-					min.setValue((byte) i, point.getValue((byte) i));
+				if (min[i] > point[i]) {
+					min[i] = point[i];
 					extend = true;
 				}
 			}

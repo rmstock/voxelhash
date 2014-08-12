@@ -4,25 +4,25 @@ import java.util.Map;
 
 public class Character implements IRenderable {
 	private Bounding box;
-	private Map<Coordinate, IVoxel> map;
-	private Coordinate offset;
+	private Map<int[], IVoxel> map;
+	private int[] offset;
 	private boolean immutable;
 	
 	public Character() {
 		// TODO set initializers and fill bounding from map from file
 		box = new Bounding();
-		map = new HashMap<Coordinate, IVoxel>();
-		offset = Coordinate.getZero();
+		map = new HashMap<int[], IVoxel>();
+		offset = new int[] {0,0,0};
 		immutable = false;
 	}
 
 	@Override
-	public Map<Coordinate, IVoxel> getVoxelMap() {
+	public Map<int[], IVoxel> getVoxelMap() {
 		return map;
 	}
 
 	@Override
-	public Coordinate getOffset() {
+	public int[] getOffset() {
 		return offset;
 	}
 

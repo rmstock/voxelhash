@@ -6,13 +6,13 @@ import java.util.Map;
 public class Placeable implements IRenderable, ISaveable {
 
 	@Override
-	public Map<Coordinate, IVoxel> getVoxelMap() {
+	public Map<int[], IVoxel> getVoxelMap() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public Coordinate getOffset() {
+	public int[] getOffset() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -39,12 +39,12 @@ public class Placeable implements IRenderable, ISaveable {
 	public boolean load(String fileName) {
 		SaveReader reader = new SaveReader(fileName, Model.getInstance().getSaveName(), ".obj");
 		String[] words;
-		HashMap<Coordinate, IVoxel> toAdd = null;
+		HashMap<int[], IVoxel> toAdd = null;
 		IVoxel colored = null;
 		boolean worked = true;
 		while ((words = reader.readLine()) != null) {
 			if (words[0].equals("new") && words[1].equals("VOXELMAP")) {
-				toAdd = new HashMap<Coordinate, IVoxel>();
+				toAdd = new HashMap<int[], IVoxel>();
 			} else if (words[0].equals("new") && words[1].equals("LIST")) {
 				String[] line;
 				if (colored == null) {
@@ -52,10 +52,10 @@ public class Placeable implements IRenderable, ISaveable {
 					worked = false;
 				}
 				while (!(line = reader.readLine())[0].equals("end")) {
-					toAdd.put(new Coordinate(new int[] {Integer.parseInt(line[0]), Integer.parseInt(line[1]), Integer.parseInt(line[2])}), colored);
+					toAdd.put(new int[] {Integer.parseInt(line[0]), Integer.parseInt(line[1]), Integer.parseInt(line[2])}, colored);
 				}
 			} else if (words[0].equals("set") && words[1].equals("COLOR")) {
-				colored = new ColorVoxel(new Coordinate(new int[] {Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4])}));
+				colored = new ColorVoxel(new int[] {Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4])});
 			}
 		}
 		return worked;
