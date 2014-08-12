@@ -1,3 +1,5 @@
+package voxelhash;
+
 /* Bounding contains two Vector3s, which is uses to compute the minimum and maximum
  * xyz values. 
  * 

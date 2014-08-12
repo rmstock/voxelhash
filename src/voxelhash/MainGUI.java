@@ -1,3 +1,4 @@
+package voxelhash;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Scene;
 

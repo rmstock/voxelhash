@@ -1,3 +1,4 @@
+package voxelhash;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 

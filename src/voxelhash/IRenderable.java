@@ -1,3 +1,4 @@
+package voxelhash;
 import java.util.Map;
 
 public interface IRenderable {

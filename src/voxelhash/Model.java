@@ -1,3 +1,5 @@
+package voxelhash;
+
 
 public class Model {
 	private static Model instance = new Model();

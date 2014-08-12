@@ -1,3 +1,4 @@
+package voxelhash;
 import java.util.Arrays;
 
 public class Coordinate{

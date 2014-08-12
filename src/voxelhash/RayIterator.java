@@ -1,3 +1,4 @@
+package voxelhash;
 import java.util.Iterator;
 
 public class RayIterator implements Iterator<Coordinate>{

@@ -1,3 +1,4 @@
+package voxelhash;
 
 public interface ISaveable {
 	public boolean save();

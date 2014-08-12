@@ -1,3 +1,5 @@
+package voxelhash;
+
 
 public class ColorVoxel implements IVoxel{
 	public Coordinate color;
