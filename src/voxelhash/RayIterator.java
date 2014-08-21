@@ -57,7 +57,19 @@ public class RayIterator implements Iterator<int[]>{
 				dist[0] += step[0];
 				dist[2] += step[2];
 			}
-		} else if (dist[0] == dist[1]) {
+		} else if (dist[0] > dist[1]) {
+			if (dist[1] < dist[2]) {
+				ret = new int[] {(int)(direction[0] * dist[1]) + origin[0], Math.round(direction[1] * dist[1]) + origin[1], (int)(direction[2] * dist[1]) + origin[2]};
+				dist[1] += step[1];
+			} else if (dist[1] > dist[2]) {
+				ret = new int[] {(int)(direction[0] * dist[2]) + origin[0], (int)(direction[1] * dist[2]) + origin[1], Math.round(direction[2] * dist[2]) + origin[2]};
+				dist[2] += step[2];
+			} else {
+				ret = new int[] {(int)(direction[0] * dist[1]) + origin[0], Math.round(direction[1] * dist[1]) + origin[1], Math.round(direction[2] * dist[1]) + origin[2]};
+				dist[1] += step[1];
+				dist[2] += step[2];
+			}
+		} else {
 			if (dist[0] > dist[2]) {
 				ret = new int[] {(int)(direction[0] * dist[0]) + origin[0], (int)(direction[1] * dist[0]) + origin[1], Math.round(direction[2] * dist[0]) + origin[2]};
 				dist[2] += step[2];
@@ -70,18 +82,6 @@ public class RayIterator implements Iterator<int[]>{
 				dist[0] += step[0];
 				dist[2] += step[2];
 				dist[1] += step[1];
-			}
-		} else {
-			if (dist[1] < dist[2]) {
-				ret = new int[] {(int)(direction[0] * dist[1]) + origin[0], Math.round(direction[1] * dist[1]) + origin[1], (int)(direction[2] * dist[1]) + origin[2]};
-				dist[1] += step[1];
-			} else if (dist[1] > dist[2]) {
-				ret = new int[] {(int)(direction[0] * dist[2]) + origin[0], (int)(direction[1] * dist[2]) + origin[1], Math.round(direction[2] * dist[2]) + origin[2]};
-				dist[2] += step[2];
-			} else {
-				ret = new int[] {(int)(direction[0] * dist[1]) + origin[0], Math.round(direction[1] * dist[1]) + origin[1], Math.round(direction[2] * dist[1]) + origin[2]};
-				dist[1] += step[1];
-				dist[2] += step[2];
 			}
 		}
 		return ret;
