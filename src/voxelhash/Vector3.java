@@ -45,10 +45,8 @@ public class Vector3{
 		return data;
 	}
 	
-	public static void normalize(float[] vals) {
+	public static float[] normalize(float[] vals) {
 		float length = (float)Math.sqrt(Math.pow(vals[0],2) + Math.pow(vals[1],2) + Math.pow(vals[2],2));
-		vals[0] /= length;
-		vals[1] /= length;
-		vals[2] /= length;
+		return new float[] {vals[0] /= length, vals[1] /= length, vals[2] /= length};
 	}
 }

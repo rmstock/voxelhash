@@ -6,16 +6,22 @@ public class RayIterator implements Iterator<int[]>{
 	private float[] direction;
 	private float[] dist;
 	private float[] step;
-	private int[] last;
 	
 	
 	public RayIterator(int[] coord, float[] direction) {
 		this.origin = coord;
-		this.direction = direction;
-		dist = new float[]{0,0,0};
-		Vector3.normalize(dist);
-		step = new float[]{1 / direction[0], 1 / direction[1], 1 / direction[2]};
-		last = null;
+		this.direction = Vector3.normalize(direction);
+		dist = new float[] {
+				direction[0] != 0 ? 0 : Float.MAX_VALUE,
+				direction[1] != 0 ? 0 : Float.MAX_VALUE,
+				direction[2] != 0 ? 0 : Float.MAX_VALUE
+		};
+		step = new float[]{
+				direction[0] != 0 ? Math.abs(1 / direction[0]) : Float.MAX_VALUE,
+				direction[1] != 0 ?	Math.abs(1 / direction[1]) : Float.MAX_VALUE,
+				direction[2] != 0 ? Math.abs(1 / direction[2]) : Float.MAX_VALUE
+		};
+		
 	}
 
 	@Override
@@ -25,13 +31,46 @@ public class RayIterator implements Iterator<int[]>{
 
 	@Override
 	public int[] next() {
-		int shortest;
-		shortest = (dist[0] > dist[1]) ? 1 : 0;
-		shortest = (dist[shortest] > dist[2]) ? 2 : shortest;
-		int[] ret = new int[]{(int)(direction[0] * dist[shortest]) + origin[0], (int)(direction[1] * dist[shortest]) + origin[1], (int)(direction[2] * dist[shortest]) + origin[2]};
-		dist[shortest] = dist[shortest] + step[shortest];
-		if (origin.equals(last))
-			System.out.println("Error: Origin" + origin.toString() + " equals next: " + ret.toString());
+		int[] ret;
+		if(dist[0] < dist[1]) {
+			if (dist[0] < dist[2]) {
+				ret = new int[] {Math.round(direction[0] * dist[0]) + origin[0], (int)(direction[1] * dist[0]) + origin[1], (int)(direction[2] * dist[0]) + origin[2]};
+				dist[0] += step[0];
+			} else if (dist[0] == dist[2]) {
+				ret = new int[] {Math.round(direction[0] * dist[0]) + origin[0], (int)(direction[1] * dist[0]) + origin[1], Math.round(direction[2] * dist[0]) + origin[2]};
+				dist[0] += step[0];
+				dist[2] += step[2];
+			} else {
+				ret = new int[] {(int)(direction[0] * dist[2]) + origin[0], (int)(direction[1] * dist[2]) + origin[1], (int)Math.round(direction[2] * dist[2]) + origin[2]};
+				dist[2] += step[2];
+			}
+		} else if (dist[0] == dist[1]) {
+			if (dist[0] < dist[2]) {
+				ret = new int[] {Math.round(direction[0] * dist[0]) + origin[0], Math.round(direction[1] * dist[0]) + origin[1], (int)(direction[2] * dist[0]) + origin[2]};
+				dist[0] += step[0];
+				dist[1] += step[1];
+			} else if (dist[0] == dist[2]) {
+				ret = new int[] {Math.round(direction[0] * dist[0]) + origin[0], Math.round(direction[1] * dist[0]) + origin[1], Math.round(direction[2] * dist[0]) + origin[2]};
+				dist[0] += step[0];
+				dist[2] += step[2];
+				dist[1] += step[1];
+			} else {
+				ret = new int[] {(int)(direction[0] * dist[0]) + origin[0], (int)(direction[1] * dist[0]) + origin[1], Math.round(direction[2] * dist[0]) + origin[2]};
+				dist[2] += step[2];
+			}
+		} else {
+			if (dist[1] < dist[2]) {
+				ret = new int[] {(int)(direction[0] * dist[1]) + origin[0], Math.round(direction[1] * dist[1]) + origin[1], (int)(direction[2] * dist[1]) + origin[2]};
+				dist[1] += step[1];
+			} else if (dist[1] == dist[2]) {
+				ret = new int[] {(int)(direction[0] * dist[1]) + origin[0], Math.round(direction[1] * dist[1]) + origin[1], Math.round(direction[2] * dist[1]) + origin[2]};
+				dist[1] += step[1];
+				dist[2] += step[2];
+			} else {
+				ret = new int[] {(int)(direction[0] * dist[2]) + origin[0], (int)(direction[1] * dist[2]) + origin[1], Math.round(direction[2] * dist[2]) + origin[2]};
+				dist[2] += step[2];
+			}
+		}
 		return ret;
 	}
 
