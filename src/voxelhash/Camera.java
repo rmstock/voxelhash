@@ -9,7 +9,6 @@ public class Camera {
 	private ViewType viewType;
 	private int width;
 	private int height;
-	private float aspect;
 	static final float LENS_WIDTH = .002f;
 	
 	public Camera(float[] forward, float fovRad, float viewDist, ViewType viewType, int width, int height) {
