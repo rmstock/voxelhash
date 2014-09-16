@@ -9,7 +9,7 @@ public class View{
 	private Camera cam;
 	
 	private View(){
-		cam = new Camera(null,null,null,1,1,ViewType.ARC);
+		cam = new Camera(null,1,1,ViewType.GRID, 500, 500);
 	}
 	
 	public static View getInstance() {

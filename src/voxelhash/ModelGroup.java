@@ -43,6 +43,12 @@ public class ModelGroup implements IRenderable, ISaveable{
 		}
 		return false;
 	}
+	
+	@Override
+	public boolean collision(Ray incoming, byte[] colorRet) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
 	public boolean isImmutable() {

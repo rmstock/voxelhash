@@ -6,4 +6,5 @@ public interface IRenderable {
 	public int[] getOffset();
 	public boolean boundingHit(Ray incoming);
 	public boolean isImmutable();
+	public boolean collision(Ray incoming, byte[] colorRet);
 }

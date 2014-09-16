@@ -45,4 +45,10 @@ public class Terrain implements IRenderable {
 	public boolean isImmutable() {
 		return true;
 	}
+
+	@Override
+	public boolean collision(Ray incoming, byte[] colorRet) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

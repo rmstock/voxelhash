@@ -60,4 +60,10 @@ public class Placeable implements IRenderable, ISaveable {
 		}
 		return worked;
 	}
+
+	@Override
+	public boolean collision(Ray incoming, byte[] colorRet) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

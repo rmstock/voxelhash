@@ -35,4 +35,10 @@ public class Character implements IRenderable {
 	public boolean isImmutable() {
 		return immutable;
 	}
+
+	@Override
+	public boolean collision(Ray incoming, byte[] colorRet) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

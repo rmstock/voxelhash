@@ -42,4 +42,8 @@ public class Bounding {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public boolean testHit(Ray incoming, Float near, Float far) {
+		return false;
+	}
 }

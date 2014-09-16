@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="156" started-at="2014-08-21T02:46:42Z" finished-at="2014-08-21T02:46:42Z">
+  <suite name="Default suite" duration-ms="238" started-at="2014-09-05T03:05:10Z" finished-at="2014-09-05T03:05:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="156" started-at="2014-08-21T02:46:42Z" finished-at="2014-08-21T02:46:42Z">
+    <test name="Default test" duration-ms="238" started-at="2014-09-05T03:05:10Z" finished-at="2014-09-05T03:05:10Z">
       <class name="voxelhashtests.RayIteratorTest">
-        <test-method status="PASS" signature="RayIterator()[pri:0, instance:voxelhashtests.RayIteratorTest@133adc]" name="RayIterator" duration-ms="79" started-at="2014-08-20T19:46:42Z" finished-at="2014-08-20T19:46:42Z">
+        <test-method status="PASS" signature="RayIterator()[pri:0, instance:voxelhashtests.RayIteratorTest@133adc]" name="RayIterator" duration-ms="153" started-at="2014-09-04T20:05:10Z" finished-at="2014-09-04T20:05:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RayIterator -->
